@@ -1,7 +1,7 @@
 import './assets/css/app.css';
 import Sidebar from './components/Sidebar';
 import Header from './components/Header';
-import NumbersInfo from './components/NumbersInfo';
+import ContentRowMovies from './components/ContentRowMovies';
 import LastMovie from './components/LastMovie';
 import Genres from './components/Genres';
 import Footer from './components/Footer';
@@ -14,7 +14,7 @@ function App() {
         <div id="content">
           <Header />
           <div className="container-fluid">
-            <NumbersInfo />
+            <ContentRowMovies />
             <div className="row">
               <LastMovie />
               <Genres />
