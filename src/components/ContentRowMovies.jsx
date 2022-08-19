@@ -1,28 +1,30 @@
 import '../assets/css/app.css';
 import ColumnContentRowMovies from './ColumnContentRowMovies';
+import { useState, useEffect } from 'react';
+import api from '../services/api';
 
-const cards = [
-	{
-	title:"Movies in Data Base",
-	value:"21",
-	color:"primary",
-	icon:"fa-film"
-},
-	{
-		title:"Total Awards",
-	value:"79",
-	color:"success",
-	icon:"fa-award"
-},
-	{
-	title:"Actors Quantity",
-	value:"49",
-	color:"warning",
-	icon:"fa-user"
-}
-];
 
-export default function ContentRowMovies(props) {
+export default function ContentRowMovies() {
+	
+	const cardsDefault = [
+		{	title:"Movies in Data Base", value:"0",	color:"primary", icon:"fa-film"},
+		{	title:"Total Awards",	value:"0", color:"success",	icon:"fa-award"},
+		{	title:"Actors Quantity",	value:"0",	color:"warning",	icon:"fa-user"}
+	];
+
+	const [cards, setCards] = useState(cardsDefault);
+	
+	async function fetchNumbers(){
+		const response = await api.get('/api/dashboard');
+		setCards([
+			{	title:"Movies in Data Base", value: response.data.countMovies,	color:"primary", icon:"fa-film"},
+			{	title:"Total Awards",	value: response.data.countAwards, color:"success",	icon:"fa-award"},
+			{	title:"Actors Quantity",	value: response.data.countActors,	color:"warning",	icon:"fa-user"}
+		]);
+	}
+	
+	useEffect(() => {fetchNumbers()} , []);
+
   return(
     <>
     			<div className="d-sm-flex align-items-center justify-content-between mb-4">
