@@ -35,7 +35,7 @@ export default function ContentRowMovies() {
 
 						{
 							cards.map((card, index) => (
-							<ColumnContentRowMovies key={index} title={card.title} color={card.color} value={card.value} icon={card.icon} />
+								<ColumnContentRowMovies key={index} title={card.title} color={card.color} value={card.value} icon={card.icon} />
 							))
 						}
 												
