@@ -1,7 +1,7 @@
 import '../assets/css/app.css';
+import { Link } from 'react-router-dom';
 
 function MovieList(props) {
-  
   return (
       <table className="table table-bordered table-dark">
           <thead>
@@ -14,10 +14,13 @@ function MovieList(props) {
               </tr>
           </thead>
           <tbody>
+
               {
                   props.movies.map((movie, index) => (
                       <tr key={index}>
-                          <th scope="row">{movie.id}</th>
+                        <Link to={`/movies/${movie.id}`}>
+                          <th className="table table-bordered table-dark" scope="row">{movie.id}</th>
+                        </Link>
                           <td>{movie.title}</td>
                           <td>{movie.rating}</td>
                           <td>{movie.length + ' min'}</td>
